@@ -2,15 +2,18 @@
 
 Generated dummy repositories for testing skill discovery. No credentials or application configuration are included.
 
-Paste a GitHub folder URL for one scenario into n8n: Create skills → Connect to GitHub.
+In n8n, select **Create skills → Connect to GitHub**. Paste a scenario's folder URL below. Use the folder URLs, not the repository root: the root combines all scenarios, including a broken manifest.
 
-- grouped: Writing and Engineering groups, skipped files, external plugin notice.
-- fallback: broken manifest, three valid skills, invalid frontmatter, oversized reference.
-- cursor-custom: explicit custom grouping with an ungrouped skill.
-- long-description: 1024-character description.
-- external-only: external plugin notice without local skills.
-- starter: team-writing-guide and a reference file.
+| Scenario | Folder URL | Expected result |
+| --- | --- | --- |
+| Groups and skipped files | https://github.com/DeveloperTheExplorer/skill-discovery-preview/tree/main/grouped | Writing and Engineering groups, three selectable skills, four skipped files, an external plugin notice. |
+| Broken manifest | https://github.com/DeveloperTheExplorer/skill-discovery-preview/tree/main/fallback | Flat list with a warning, three selectable skills, two blocked rows. |
+| Specific subfolder | https://github.com/DeveloperTheExplorer/skill-discovery-preview/tree/main/grouped/plugins/writing/skills/brand-voice | Only brand-voice. No parent group or sibling skills. |
+| Cursor custom paths | https://github.com/DeveloperTheExplorer/skill-discovery-preview/tree/main/cursor-custom | editorial is grouped; legacy remains selectable outside the group. |
+| Description boundary | https://github.com/DeveloperTheExplorer/skill-discovery-preview/tree/main/long-description | One valid skill with a 1024-character description. |
+| External entries only | https://github.com/DeveloperTheExplorer/skill-discovery-preview/tree/main/external-only | An external plugin notice with no selectable local skills. |
+| Starter skill | https://github.com/DeveloperTheExplorer/skill-discovery-preview/tree/main/starter | team-writing-guide and one reference file. |
 
-Use grouped/plugins/writing/skills/brand-voice to check the strict subfolder boundary.
+The grouped and fallback examples share skill names. Inspect both pickers before importing, or use separate project scopes to avoid name conflicts.
 
-The example script files are inert samples. n8n should list them as skipped.
+The external plugin points to a dummy repository. The sample script is inert. n8n should list it as skipped.
