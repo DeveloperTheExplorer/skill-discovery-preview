@@ -1,0 +1,1 @@
+{"name":"Team examples","plugins":[{"name":"Writing","source":"./plugins/writing"},{"name":"Engineering","source":"./plugins/engineering"},{"name":"External research tools","source":{"source":"github","repo":"example/research-tools"}}]}
